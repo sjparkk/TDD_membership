@@ -1,5 +1,6 @@
 package com.tdd.membership.app.entity;
 
+import com.tdd.membership.app.enums.MembershipType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,8 +23,8 @@ public class Membership {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 20)
-    private String membershipName;
+    @Enumerated(EnumType.STRING) // enum의 코드값으로 디비에 저장됨 (미설정시 디폴트값인 ORDINAL (1,2,3..) Integer 값으로 저장)
+    private MembershipType membershipType;
 
     @Column(nullable = false)
     private String userId;

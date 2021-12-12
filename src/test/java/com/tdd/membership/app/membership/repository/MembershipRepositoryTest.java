@@ -1,6 +1,7 @@
 package com.tdd.membership.app.membership.repository;
 
 import com.tdd.membership.app.entity.Membership;
+import com.tdd.membership.app.enums.MembershipType;
 import com.tdd.membership.app.repositoyry.MembershipRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +29,7 @@ public class MembershipRepositoryTest {
         //given
         final Membership membership = Membership.builder()
                 .userId("id")
-                .membershipName("네이버")
+                .membershipType(MembershipType.NAVER)
                 .point(10000)
                 .build();
 
@@ -38,7 +39,7 @@ public class MembershipRepositoryTest {
         //then
         assertThat(result.getId()).isNotNull();
         assertThat(result.getUserId()).isEqualTo("id");
-        assertThat(result.getMembershipName()).isEqualTo("네이버");
+        assertThat(result.getMembershipType()).isEqualTo(MembershipType.NAVER);
         assertThat(result.getPoint()).isEqualTo(10000);
     }
 }
